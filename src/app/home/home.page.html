@@ -1,20 +1,58 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+<ion-menu contentId="main-content">
+  <ion-header>
     <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+  <ion-list>
+    <ion-list-header> Navigate </ion-list-header>
+    <ion-menu-toggle auto-hide="false">
+      <ion-item button [routerLink]="['/home']" routerLinkActive="router-link-active">
+        <ion-icon slot="start" name="home"></ion-icon>
+        <ion-label> Home </ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+    <ion-menu-toggle auto-hide="false">
+      <ion-item button (click)="logout()">
+        <ion-icon slot="start" name="log-out-outline"></ion-icon>
+        <ion-label> Logout </ion-label>
+      </ion-item>
+    </ion-menu-toggle>
+  </ion-list>
+</ion-content>
+</ion-menu>
+
+ <!-- <ion-content>
+
+  Selamat datang {{ nama }}
+ </ion-content> -->
+
+ <div class="ion-page" id="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>PlaylistKu</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
-</ion-content>
+  <ion-content >
+    <ion-card lines="inset" *ngFor="let item of playlist">
+      <ion-item>
+      <ion-label>
+      <p>{{item.judul}}</p>
+      <p>{{item.penyanyi}}</p>
+      </ion-label>
+      <ion-button color="primary" slot="end" [routerLink]="['/playlist-edit/',item.id]"
+      routerLinkActive="router-link-active">Edit</ion-button>
+      <ion-button color="danger" slot="end" (click)="deletePlaylist(item.id)">Hapus</ion-button>
+      </ion-item>
+    </ion-card>
+    <hr>
+  <ion-card>
+  <ion-button color="primary" expand="block" [routerLink]="['/playlist-tambah']">Tambah Lagu</ion-button>
+  </ion-card>
+  </ion-content>
+</div>

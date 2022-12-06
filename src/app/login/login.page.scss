@@ -1,0 +1,15 @@
+ion-button[color="dark"] {
+    text-transform: initial;
+  }
+  .register{
+    color: black;
+  }
+  
+  ion-content {
+    --background: var(--ion-color-primary);
+  }
+
+  .flex-center{
+    justify-content: center;
+  align-items: center;
+  }
